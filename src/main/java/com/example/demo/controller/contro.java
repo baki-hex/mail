@@ -4,14 +4,14 @@ package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.tnmblr;
 import com.example.demo.repss.Reps;
 import com.example.demo.service.Serv;
-import java.util.List;
+
 import org.apache.commons.validator.routines.EmailValidator;
 
 @RestController
@@ -31,10 +31,10 @@ if(!EmailValidator.getInstance().isValid(to)){
 } 
         tnmblr tm = new tnmblr();
         tm.setRecvmail(to);
-       if(rep.existsByUserMail(tm.getUserMail())){
-// srv.sett(to,txt);
+       if(rep.existsByrecvmail(to)){
+srv.sett(to,txt);
        }else{
-        // srv.sett(to,txt);
+         srv.sett(to,txt);
         rep.save(tm);
        }
         return "suzzessfully saved";
